@@ -37,11 +37,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableAutoConfiguration
 public class CoreConf {
 
-	public static final String SKIN_PERSISTENCE_UNIT = "skinUnit";
-	
-    @Autowired
-    Environment env;
-    
     @Bean
     public JpaDialect jpaDialect() {
         return new HibernateJpaDialect();
