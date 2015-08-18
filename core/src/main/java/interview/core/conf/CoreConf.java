@@ -1,10 +1,3 @@
-/**
- * (c) 2015 by MassineBoecker GmbH.
- * All rights reserved.
- * Do not change or copy without permission of MassineBoecker GmbH.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- */
-
 package interview.core.conf;
 
 import javax.persistence.EntityManagerFactory;
