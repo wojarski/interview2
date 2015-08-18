@@ -1,0 +1,62 @@
+buildscript {
+	    dependencies {
+	        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE")
+		    //compile 'org.springframework.data:spring-data-jpa:1.8.2.RELEASE'
+	    }
+	    repositories {
+	    	mavenCentral()
+	    	maven { url "https://repository.jboss.org/nexus/content/repositories/releases" }
+	    }
+	}
+	
+	
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+
+
+repositories {
+    mavenCentral()
+    maven { url "https://repository.jboss.org/nexus/content/repositories/releases" }
+}
+
+mainClassName = 'foo.Foo'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+allprojects {
+  apply plugin: 'spring-boot'
+  mainClassName = 'foo.Foo'
+}
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'eclipse-wtp'
+    apply plugin: 'spring-boot'
+
+	mainClassName = 'interview.web.conf.Initializer'
+
+	sourceCompatibility = 1.7
+	targetCompatibility = 1.7
+
+
+    repositories {
+       mavenCentral()
+       mavenLocal()
+       maven { url "https://repository.jboss.org/nexus/content/repositories/releases" }
+    }
+
+    dependencies {
+        testCompile 'junit:junit:4.12'
+        compile 'org.springframework.boot:spring-boot-autoconfigure:1.2.5.RELEASE'
+        compile 'org.springframework.boot:spring-boot:1.2.5.RELEASE'
+
+    }
+
+    version = '1.0'
+
+    jar {
+        manifest.attributes provider: 'gradle'
+    }
+}

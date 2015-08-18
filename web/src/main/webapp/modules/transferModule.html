@@ -1,0 +1,24 @@
+<script src="i18n/angular-locale_de-de.js"></script>
+<section>
+	<form name="form" ng-submit="submitTransfer(form)" ng-hide="transferComplete" novalidate="novalidate">
+		<label for="accountFrom">Account From</label>
+		<input type="number" name="accountNoFrom" ng-model="data.accountNoFrom" id="accountFrom" pattern=".{8,}" class="form-control" required="required"/>
+		<div ng-show="form.$submitted && (form.accountNoFrom.$error.number || form.accountNoFrom.$error.pattern)" class="error">Account number incorrect.</div> 
+		<div ng-show="form.accountNoFrom.$error.notFound" class="error">Account number not recognized.</div> 
+
+		<label for="accountTo">Account To</label>
+		<input type="number" name="accountNoTo" ng-model="data.accountNoTo" id="accountTo" pattern=".{8,}" class="form-control" required="required" />
+		<div ng-show="form.$submitted && (form.accountNoTo.$error.number || form.accountNoTo.$error.pattern)" class="error">Account number incorrect.</div> 
+		<div ng-show="form.accountNoTo.$error.notFound" class="error">Account number not recognized.</div> 
+	
+		<label for="amount">Amount</label>
+		<input type="text" name="amount" ng-model="data.amount" id="amount" class="form-control" ng-pattern="/^[0-9]+\.?[0-9]{0,2}$/" />
+		<div ng-show="form.amount.$error.number || form.amount.$error.pattern" class="error">Incorrect amount format.</div> 
+		
+		<div ng-show="form.$error.error" class="error">Operation unsuccessful. {{$scope.form.$error.error}}</div> 
+		
+		<input type="submit" id="submit" value="Submit" class="btn" />
+		
+	</form>
+	<div ng-show="transferComplete">Transfer successful. <a href="/">Return</a></div>
+</section>
